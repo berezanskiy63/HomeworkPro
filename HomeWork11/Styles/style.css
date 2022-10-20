@@ -1,0 +1,307 @@
+@font-face {
+  font-family: Montserrat-regular;
+  src: url(../Fonts/Montserrat/static/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: Montserrat-bold;
+  src: url(../Fonts/Montserrat/static/Montserrat-Bold.ttf);
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat-variable;
+}
+
+.wrapper {
+  background-image: linear-gradient(228.57deg, #323264 11.93%, #323264 57.17%, #643E72 87.46%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 50px 60px 0;
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.navigation__link-desctop {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  justify-self: start;
+}
+.navigation__link-mobile {
+  display: none;
+}
+
+.navbar {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  justify-self: end;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar__navbar-item {
+  position: relative;
+}
+.navbar__navbar-item:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: -12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgb(230, 230, 240);
+  vertical-align: middle;
+  display: inline-block;
+}
+.navbar__navbar-item:last-child::before {
+  top: 12px;
+}
+.navbar__language-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+.navbar__language-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+.navbar__language-link {
+  font-size: 12px;
+  line-height: 15px;
+  font-family: 700;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 5px 7px;
+}
+.navbar__language-link--active {
+  border-radius: 8px;
+  background-color: rgb(240, 20, 90);
+}
+.navbar__adress, .navbar__phone {
+  text-decoration: none;
+}
+.navbar__adress {
+  font-size: 16px;
+  line-height: 20px;
+  color: rgb(179, 179, 186);
+}
+.navbar__phone {
+  font-size: 16px;
+  line-height: 20px;
+  font-family: Montserrat-bold;
+  color: rgb(255, 255, 255);
+}
+
+.facebook-logo--color:hover {
+  fill: rgb(240, 20, 90);
+  cursor: pointer;
+}
+
+.menu {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  justify-self: end;
+}
+.menu__list {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu__link {
+  font-size: 16px;
+  line-height: 20px;
+  font-family: Montserrat-bold;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 0 0 3px 0;
+}
+.menu__link:hover {
+  border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 1024px) {
+  .navigation {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
+  .navigation__link-desctop {
+    grid-row: 2/3;
+  }
+  .navbar {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    justify-self: start;
+  }
+  .menu {
+    grid-column: 1/2;
+    grid-row: 3/4;
+    justify-self: start;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+  .navigation {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0;
+  }
+  .navigation__link-desctop {
+    display: none;
+  }
+  .navigation__link-mobile {
+    display: inline-block;
+    justify-self: left;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin-left: 15px;
+  }
+  .navbar {
+    width: 100%;
+    padding: 10px 15px;
+    grid-column: 1/3;
+    grid-row: 1/2;
+    justify-content: space-between;
+  }
+  .navbar__navbar-item:not(:first-child)::before {
+    display: none;
+  }
+  .navbar__navbar-item:nth-child(2n) {
+    display: none;
+  }
+  .navbar--lighter {
+    background-color: rgba(245, 245, 250, 0.2);
+  }
+  .menu {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    justify-self: end;
+    align-self: center;
+    margin-right: 15px;
+  }
+  .menu__humburger {
+    z-index: 95;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .menu__humburger-line {
+    z-index: 95;
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: white;
+    transition: 0.3s;
+  }
+  .menu__humburger--active .menu__humburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .menu__humburger--active .menu__humburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: rgb(236, 111, 93);
+  }
+  .menu__humburger--active .menu__humburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: rgb(236, 111, 93);
+  }
+  .menu__body {
+    position: fixed;
+    top: 45px;
+    left: -100%;
+    width: calc(100% - 16px);
+    background-color: white;
+    border-radius: 12px 12px 0 0;
+    padding: 65px 12px 12px 12px;
+    transition: left 0.3s ease 0s;
+  }
+  .menu__body--active {
+    left: 8px;
+  }
+  .menu__link:hover {
+    border: none;
+  }
+  .menu__list {
+    flex-direction: column;
+  }
+  .menu__item {
+    background-color: rgb(245, 245, 250);
+    border-radius: 8px;
+    padding: 7px 0;
+  }
+  .menu__item:active {
+    background-color: rgb(230, 230, 240);
+  }
+  .menu__link {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 29px;
+    font-family: Montserrat-bold;
+    color: rgb(36, 163, 255);
+  }
+  body.lock {
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .menu__body {
+    max-height: 275px;
+    overflow: auto;
+  }
+}
+.main-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  min-height: 100vh;
+  background-image: url(../Images/Symbol.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-heading__text {
+  font-size: 38px;
+  line-height: 46px;
+  font-family: Montserrat-bold;
+  color: white;
+  margin: 0 30px;
+}
+
+.more__button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  background-color: transparent;
+  background-image: url(../Images/Vector.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 30px;
+}
+.more__button:hover {
+  background-image: url(../Images/Vector-hover.png);
+  border: 1px solid rgb(240, 20, 90);
+}
